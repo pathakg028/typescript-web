@@ -1,21 +1,14 @@
-import { User } from './modal/User'
+import { User } from './models/User'
 
-const user = new User({name: 'Gaurav', age: 36})
-console.log(user.get('name'))
-console.log(user.get('age'))
+const user = new User({ name: 'Gp', age: 90 })
 
-user.set({name: 'Pathak'})
+// user.fetch();
 
-user.on('change', () => {
-console.log("change1");
-}
-)
-user.on('change', () => {
-    console.log("change2");
-    }
-    )
-    user.on('save', () => {
-        console.log("change3");
-        }
-        )
-        user.trigger('change')
+//     user.set({name: 'Gaurav Pathak', age: 57});
+//     user.save();
+
+user.events.on('change', ()=>{
+    console.log('change!');
+
+})
+user.events.trigger('change')       
