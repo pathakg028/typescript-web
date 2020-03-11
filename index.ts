@@ -6,3 +6,7 @@ console.log(user.get('age'))
 
 user.set({name: 'Pathak'})
 
+user.on('myEvent', () => {
+
+})
+console.log(user);
