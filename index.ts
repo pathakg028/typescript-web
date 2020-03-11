@@ -6,7 +6,16 @@ console.log(user.get('age'))
 
 user.set({name: 'Pathak'})
 
-user.on('myEvent', () => {
-
-})
-console.log(user);
+user.on('change', () => {
+console.log("change1");
+}
+)
+user.on('change', () => {
+    console.log("change2");
+    }
+    )
+    user.on('save', () => {
+        console.log("change3");
+        }
+        )
+        user.trigger('change')

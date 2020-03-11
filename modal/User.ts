@@ -5,7 +5,7 @@ interface UserProps {
 type Callback = () => void;
 
 export class User {
-    events: { [key:string]: Callback[]} = {}
+    events: { [key:string]/*this is not an array. This is the syntax when we dont know what the event will be. It can be anything like 'click', 'mouseover'*/: Callback[]} = {}
     constructor(private data: UserProps){}
 
     get(propName: string): (number|string) {
@@ -26,7 +26,15 @@ export class User {
         const handlers = this.events[eventName] || [];
         handlers.push(callback)
         this.events[eventName] = handlers
-
-
+    }
+    trigger(eventName: string): string[]{
+        const handlers = this.events[eventName]
+        if(!handlers || handlers.length === 0){
+            return
+        } else {
+            handlers.forEach((callback) => {
+                callback();
+            })
+        }
     }
 }
